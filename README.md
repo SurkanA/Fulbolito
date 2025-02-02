@@ -61,3 +61,8 @@ Follow these steps to install and run the application on your local environment 
 
 6. **Access the Application**
 - Open your browser and go to `http://localhost/fulbolito` to view and use the application.
+  
+  ```
+  username: webadmin
+  password: admin
+  ```
