@@ -1,0 +1,16 @@
+{
+  "name": "fulbolito",
+  "version": "1.0.0",
+  "description": "app for soccer management of players and teams",
+  "license": "CC-BY-NC-4.0",
+  "author": "Agustin Surkan and Kevin Artola",
+  "type": "commonjs",
+  "main": "router.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "micromodal": "^0.4.10"
+  },
+  "devDependencies": {}
+}
