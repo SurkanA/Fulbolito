@@ -2,7 +2,7 @@
 
 require_once 'app/models/team.model.php';
 require_once 'app/views/team.view.php';
-require_once 'helpers/auth.helper.php';
+require_once 'libs/auth.helper.php';
 
 class TeamController
 {
