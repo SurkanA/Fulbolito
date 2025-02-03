@@ -15,7 +15,7 @@ class Model
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2024 at 06:09 PM
+-- Generation Time: Feb 03, 2025 at 12:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,47 +30,48 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `futbol`
+-- Database: `soccer`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `equipo`
+-- Table structure for table `players`
 --
 
-CREATE TABLE `equipo` (
-  `id_equipo` int(11) NOT NULL,
-  `nombre_equipo` varchar(100) NOT NULL,
-  `ciudad` varchar(100) NOT NULL,
-  `year_fundado` year(4) NOT NULL,
-  `biografia` varchar(300) DEFAULT NULL,
-  `imagen_url` varchar(100) DEFAULT NULL
+CREATE TABLE `players` (
+  `player_name` varchar(50) NOT NULL,
+  `team_name` varchar(50) NOT NULL,
+  `id_player` int(11) NOT NULL,
+  `age` int(11) NOT NULL,
+  `position` varchar(50) NOT NULL,
+  `number` int(11) NOT NULL,
+  `biography` varchar(300) DEFAULT NULL,
+  `image_url` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jugador`
+-- Table structure for table `teams`
 --
 
-CREATE TABLE `jugador` (
-  `nombre_jugador` varchar(50) NOT NULL,
-  `nombre_equipo` varchar(50) NOT NULL,
-  `id_jugador` int(11) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `posicion` varchar(50) NOT NULL,
-  `biografia` varchar(300) DEFAULT NULL,
-  `imagen_url` varchar(300) DEFAULT NULL
+CREATE TABLE `teams` (
+  `id_team` int(11) NOT NULL,
+  `team_name` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `year_founded` year(4) NOT NULL,
+  `biography` varchar(300) DEFAULT NULL,
+  `image_url` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -78,33 +79,33 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `usuario` (`id_user`, `user`, `password`, `administrator`) VALUES
-(1, 'webadmin', '$2y$10$6zil872KW/HBsFJKH0D33OlEaGsshD36NDl455kfhz9Uhs.FxqLa2', 'S');
+INSERT INTO `users` (`id_user`, `user`, `password`, `administrator`) VALUES
+(1, 'webadmin', '$2y$10$6zil872KW/HBsFJKH0D33OlEaGsshD36NDl455kfhz9Uhs.FxqLa2', 'Y');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `equipo`
+-- Indexes for table `players`
 --
-ALTER TABLE `equipo`
-  ADD PRIMARY KEY (`id_equipo`);
+ALTER TABLE `players`
+  ADD PRIMARY KEY (`id_player`,`team_name`) USING BTREE,
+  ADD KEY `nombre_equipo` (`team_name`) USING BTREE;
 
 --
--- Indexes for table `jugador`
+-- Indexes for table `teams`
 --
-ALTER TABLE `jugador`
-  ADD PRIMARY KEY (`id_jugador`,`nombre_equipo`) USING BTREE,
-  ADD KEY `nombre_equipo` (`nombre_equipo`) USING BTREE;
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id_team`);
 
 --
--- Indexes for table `usuario`
+-- Indexes for table `users`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
@@ -112,16 +113,16 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT for table `equipo`
+-- AUTO_INCREMENT for table `teams`
 --
-ALTER TABLE `equipo`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+ALTER TABLE `teams`
+  MODIFY `id_team` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `usuario`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
