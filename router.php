@@ -7,7 +7,7 @@ require_once 'app/controllers/player.controller.php';
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 if ($_GET['action'] != 'api') {
-    $action = $_GET['action'] ? $_GET['action'] : 'home';
+    $action = !empty($_GET['action']) ? $_GET['action'] : 'home';
     $params = explode('/', $action);
 
     switch ($params[0]) {
